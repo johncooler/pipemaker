@@ -2,3 +2,4 @@ fastapi
 docker
 yaml
 python-rapidjson
+aiofile
