@@ -1,5 +1,7 @@
-fastapi
-docker
-yaml
-python-rapidjson
-aiofile
+fastapi==0.96.0
+docker==6.1.3
+PyYAML==6.0
+python-rapidjson==1.10
+aiofile==3.8.7
+uvicorn==0.22.0
+jsonschema==4.17.3
