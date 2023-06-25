@@ -1,5 +1,10 @@
-fastapi
+fastapi[all]
+sqlalchemy
+pydantic
+alembic
+passlib
+python-dotenv
+python-jose[cryptography]
 docker
-yaml
 python-rapidjson
 aiofile
