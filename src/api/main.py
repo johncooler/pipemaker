@@ -9,6 +9,6 @@ app.include_router(auth_router, tags=["auth"])
 app.include_router(projects_router, tags=["projects"])
 
 
-@app.get("/")
+@app.get("/", tags=["home"])
 def root():
     return {"message": "Welcome to Pipemaker!"}

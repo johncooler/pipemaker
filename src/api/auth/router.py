@@ -4,22 +4,12 @@ from datetime import timedelta
 
 from session import get_db
 from config import settings
-from security import create_access_token
-from .schemas import user_schemas
-from .schemas import token_schemas
+from .security import create_access_token
+from .schemas import user_schemas, token_schemas
+from .auth import authenticate_user
 from . import crud
-from .hasher import Hasher
 
 router = APIRouter()
-
-
-def authenticate_user(login: str, password: str, db: Session):
-    user = crud.get_user_by_login(db, login=login)
-    if not user:
-        return False
-    if not Hasher.verify_password(password, user.hashed_password):
-        return False
-    return user
 
 
 @router.post("/login/", response_model=token_schemas.Token)
