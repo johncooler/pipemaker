@@ -6,10 +6,12 @@ from typing import Optional
 from jose import jwt, JWTError
 
 from session import get_db
-from config import settings
+from config import get_settings
 from .crud import get_user_by_login
 
 oauth2_scheme = OAuth2PasswordBearer(tokenUrl="/login/")
+
+settings = get_settings()
 
 
 def create_access_token(data: dict, expires_delta: Optional[timedelta] = None):
@@ -23,7 +25,7 @@ def create_access_token(data: dict, expires_delta: Optional[timedelta] = None):
     return encoded_jwt
 
 
-def get_current_user_from_token(token: str = Depends(oauth2_scheme), db: Session = Depends(get_db)):
+async def get_current_user_from_token(token: str = Depends(oauth2_scheme), db: Session = Depends(get_db)):
     credentials_exception = HTTPException(
         status_code=status.HTTP_401_UNAUTHORIZED,
         detail="Could not validate credentials",
